@@ -24,4 +24,4 @@ RUN php artisan key:generate
 EXPOSE 8000
 
 # Default command (run migrations + start server)
-CMD ["sh", "-c", "php artisan migrate:fresh --seed && php artisan serve --host=0.0.0.0 --port=8000"]
+CMD ["sh", "-c", "php artisan serve --host=0.0.0.0 --port=8000"]
