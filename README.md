@@ -29,20 +29,26 @@ Backend menggunakan Docker untuk menjalankan aplikasi Laravel dengan PostgreSQL.
 cd gits-test-backend
 ```
 
-2. Build dan jalankan container Docker:
+2. Buat file `.env` dari `.env.example`:
+```bash
+cp .env.example .env
+```
+
+3. Build dan jalankan container Docker:
 ```bash
 docker compose up --build
 ```
 
-3. Setelah container berjalan, jalankan migration dan seeder:
+4. Setelah container berjalan, jalankan migration dan seeder:
 ```bash
 docker compose exec app php artisan migrate:fresh --seed
 ```
 
-4. Backend akan berjalan di `http://localhost:8000`
+5. Backend akan berjalan di `http://localhost:8000`
 
 #### Catatan:
 - Pastikan port 8000 tidak digunakan oleh aplikasi lain
+- File `.env` akan digunakan untuk konfigurasi aplikasi (database, JWT, dll)
 - Database PostgreSQL akan otomatis dibuat dan dikonfigurasi melalui docker-compose
 - JWT secret key akan otomatis di-generate saat pertama kali build
 
@@ -62,21 +68,26 @@ cd gits-test-frontend
 npm install
 ```
 
-3. Pastikan file `.env.local` sudah ada dengan konfigurasi berikut:
+3. Buat file `.env.local` dari `.env.example`:
+```bash
+cp .env.example .env.local
+```
+
+4. Pastikan file `.env.local` memiliki konfigurasi berikut (atau sesuaikan jika perlu):
 ```env
 NEXT_PUBLIC_API_BASE_URL=http://localhost:8000/api
 ```
 
-4. Jalankan development server:
+5. Jalankan development server:
 ```bash
 npm run dev
 ```
 
-5. Frontend akan berjalan di `http://localhost:3000`
+6. Frontend akan berjalan di `http://localhost:3000`
 
 #### Catatan:
 - Pastikan backend sudah berjalan sebelum menjalankan frontend
-- File `.env.local` sudah tersedia dengan konfigurasi default
+- File `.env.local` berisi konfigurasi untuk menghubungkan frontend ke backend API
 - Jika backend berjalan di port berbeda, update `NEXT_PUBLIC_API_BASE_URL` di `.env.local`
 
 ## Akses Aplikasi
