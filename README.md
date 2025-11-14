@@ -90,7 +90,7 @@ Setelah kedua aplikasi berjalan:
 
 Setelah menjalankan seeder, Anda dapat menggunakan kredensial berikut untuk login (atau buat akun baru melalui halaman register):
 
-- Email: `nafis@example.com`
+- Email: `test@example.com`
 - Password: `password`
 
 *Catatan: Kredensial ini hanya untuk development. Pastikan untuk mengubahnya di production.*

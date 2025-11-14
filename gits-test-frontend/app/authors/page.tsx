@@ -129,22 +129,22 @@ export default function AuthorsPage() {
 
                                 {/* Pagination */}
                                 {authors && authors.last_page > 1 && (
-                                    <div className="mt-4 flex items-center justify-between">
-                                        <div className="text-sm text-gray-700">
+                                    <div className="mt-4 flex items-center justify-between rounded-lg bg-white p-4 shadow-md">
+                                        <div className="text-sm font-medium text-gray-700">
                                             Showing {authors.from} to {authors.to} of {authors.total} results
                                         </div>
                                         <div className="flex gap-2">
                                             <button
                                                 onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                                                 disabled={currentPage === 1}
-                                                className="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm disabled:opacity-50"
+                                                className="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-white"
                                             >
                                                 Previous
                                             </button>
                                             <button
                                                 onClick={() => setCurrentPage((p) => Math.min(authors.last_page, p + 1))}
                                                 disabled={currentPage === authors.last_page}
-                                                className="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm disabled:opacity-50"
+                                                className="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-white"
                                             >
                                                 Next
                                             </button>

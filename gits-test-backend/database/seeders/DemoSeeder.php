@@ -11,8 +11,8 @@ class DemoSeeder extends Seeder
 {
     public function run(): void
     {
-        $authors = Author::factory()->count(3)->create();
-        $publishers = Publisher::factory()->count(2)->create();
+        $authors = Author::factory()->count(8)->create();
+        $publishers = Publisher::factory()->count(6)->create();
 
         foreach ($authors as $author) {
             Book::factory()->count(2)->create([
