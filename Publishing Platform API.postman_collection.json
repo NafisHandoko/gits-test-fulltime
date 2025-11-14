@@ -1,0 +1,2062 @@
+{
+	"info": {
+		"_postman_id": "cc45ab07-b8d7-43c3-8c25-97ccc223207e",
+		"name": "Publishing Platform API",
+		"description": "Postman Collection for Laravel Backend (JWT + CRUD)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31147909"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Nafis\",\n    \"email\": \"nafis@example.com\",\n    \"password\": \"password\",\n    \"password_confirmation\": \"password\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Nafis\",\n    \"email\": \"nafis@example.com\",\n    \"password\": \"password\",\n    \"password_confirmation\": \"password\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/register",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.27"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Nov 2025 03:29:48 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"domain": "",
+									"path": ""
+								}
+							],
+							"body": "{\n    \"user\": {\n        \"name\": \"Nafis\",\n        \"email\": \"nafis@example.com\",\n        \"updated_at\": \"2025-11-14T03:29:46.000000Z\",\n        \"created_at\": \"2025-11-14T03:29:46.000000Z\",\n        \"id\": 2\n    },\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL3JlZ2lzdGVyIiwiaWF0IjoxNzYzMDkwOTg3LCJleHAiOjE3NjMwOTQ1ODcsIm5iZiI6MTc2MzA5MDk4NywianRpIjoiUjBXVzBPMHdhbTR1Z0p4cCIsInN1YiI6IjIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.SIMHcppuVU1oTQFjZTJDHawUmZ-2gVeEm66q7-9XpFk\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();",
+									"if (jsonData.token) {",
+									"  pm.environment.set('token', jsonData.token);",
+									"  console.log('Token saved:', jsonData.token);",
+									"} else {",
+									"  console.log('No token found in response');",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"nafis@example.com\",\n    \"password\": \"password\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Login Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"nafis@example.com\",\n    \"password\": \"password\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.27"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Nov 2025 03:31:21 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzYzMDkxMDgxLCJleHAiOjE3NjMwOTQ2ODEsIm5iZiI6MTc2MzA5MTA4MSwianRpIjoiV2IwWUFaMHJLMHhQeWxhbSIsInN1YiI6IjIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.wy70Kgf2y4yxQuUm87twn50Cw7psNThvLy0_aFRISbE\"\n}"
+						},
+						{
+							"name": "Login Failed",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"nafis@example.com\",\n  \"password\": \"password\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"login"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.27"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Nov 2025 03:28:25 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Invalid credentials\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/logout",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Logout",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/logout",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"logout"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.27"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Nov 2025 03:32:05 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"domain": "",
+									"path": ""
+								}
+							],
+							"body": "{\n    \"message\": \"Successfully logged out\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Authors",
+			"item": [
+				{
+					"name": "List Authors",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/authors",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"authors"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List Authors",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/authors",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"authors"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.27"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Nov 2025 03:38:42 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"domain": "",
+									"path": ""
+								}
+							],
+							"body": "{\n    \"current_page\": 1,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"Jennie Homenick\",\n            \"bio\": \"In distinctio quis pariatur reprehenderit. Eos nostrum aspernatur consequuntur expedita praesentium voluptatem non. Aut delectus ea est in sed hic.\",\n            \"created_at\": \"2025-11-14T02:22:32.000000Z\",\n            \"updated_at\": \"2025-11-14T02:22:32.000000Z\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Prof. Moshe Gerhold\",\n            \"bio\": \"Rerum quidem ea qui atque aut ut. Sint eaque eaque voluptas consequatur unde maiores. Ipsum corporis tenetur sit fuga eligendi tempore voluptatem. Nulla deserunt eos dolore quidem.\",\n            \"created_at\": \"2025-11-14T02:22:32.000000Z\",\n            \"updated_at\": \"2025-11-14T02:22:32.000000Z\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Freida Kulas III\",\n            \"bio\": \"Iure accusamus reprehenderit aut provident delectus. Maiores eveniet qui culpa labore sunt. Neque eaque qui asperiores qui. Quo mollitia perferendis ut impedit.\",\n            \"created_at\": \"2025-11-14T02:22:32.000000Z\",\n            \"updated_at\": \"2025-11-14T02:22:32.000000Z\"\n        }\n    ],\n    \"first_page_url\": \"http://localhost:8000/api/authors?page=1\",\n    \"from\": 1,\n    \"last_page\": 1,\n    \"last_page_url\": \"http://localhost:8000/api/authors?page=1\",\n    \"links\": [\n        {\n            \"url\": null,\n            \"label\": \"&laquo; Previous\",\n            \"page\": null,\n            \"active\": false\n        },\n        {\n            \"url\": \"http://localhost:8000/api/authors?page=1\",\n            \"label\": \"1\",\n            \"page\": 1,\n            \"active\": true\n        },\n        {\n            \"url\": null,\n            \"label\": \"Next &raquo;\",\n            \"page\": null,\n            \"active\": false\n        }\n    ],\n    \"next_page_url\": null,\n    \"path\": \"http://localhost:8000/api/authors\",\n    \"per_page\": 10,\n    \"prev_page_url\": null,\n    \"to\": 3,\n    \"total\": 3\n}"
+						},
+						{
+							"name": "List Authors (Unauthorized)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/authors",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"authors"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.27"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Nov 2025 03:37:14 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=eyJpdiI6ImUyYWpZM2k2U1pzeUFIeUhTRTlTRXc9PSIsInZhbHVlIjoiVU9NVDZHUENaeHRCcU5ic2J1M2REMUFLeDVwNFdzdGhSVG1QVzhLek50SG43YXpTRU82dDhKLzBtdFJQSUtqZVNONkhQcDQ3QnNVUThpOWd5ZStJY1VLaURndCt6cis0QU1Gd2dFSEZZSDcyKzJGZEorUEJnazdOT1ZSdXpGVGEiLCJtYWMiOiJjOTAyZjdlOTM1YzRlZjJkZjUxYjM3ZWI0MDBjZGIzN2RjNzZhNDc4YTAwMDEwMzljZTBmYWVmZTM1NmQxMGZmIiwidGFnIjoiIn0%3D; expires=Fri, 14 Nov 2025 05:37:14 GMT; Max-Age=7200; path=/; samesite=lax"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "laravel-session=eyJpdiI6IlY0Sk5PeXRJSWJHRFZsRmpiWE85TWc9PSIsInZhbHVlIjoibWN6Y1IycG1jNVlqT1JrcXZ6MVRadUVLaFVEajhjRWZLc29vbERkZHBVWkRCNUlDWlFsYm93K2dqQzgrOXd1SVpkcjYyWTFITDhQaEFIc0JHVGNGa0FNbEcrSG11M1JFSmZlUUVUeGhjT2lFNFZFeDdybGFtQTRQQ29ibGRMUGgiLCJtYWMiOiJmZjI4YjZiYjlkZWZlMWFiODIyYzU0OWE4Njg1ZWVhYWE2YmJhNjUzN2ZkMjgzNGRjNDgxMDBlYTkyMmEwYzQwIiwidGFnIjoiIn0%3D; expires=Fri, 14 Nov 2025 05:37:14 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"This is an API endpoint. Use POST /api/login to authenticate.\",\n    \"endpoint\": \"/api/login\",\n    \"method\": \"POST\",\n    \"body\": {\n        \"email\": \"string\",\n        \"password\": \"string\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Author by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/authors/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"authors",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Author by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/authors/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"authors",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.27"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Nov 2025 03:39:56 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"domain": "",
+									"path": ""
+								}
+							],
+							"body": "{\n    \"id\": 1,\n    \"name\": \"Jennie Homenick\",\n    \"bio\": \"In distinctio quis pariatur reprehenderit. Eos nostrum aspernatur consequuntur expedita praesentium voluptatem non. Aut delectus ea est in sed hic.\",\n    \"created_at\": \"2025-11-14T02:22:32.000000Z\",\n    \"updated_at\": \"2025-11-14T02:22:32.000000Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Author",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"John Doe\",\n    \"bio\": \"this is just a test\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/authors",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"authors"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Author",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"John Doe\",\n    \"bio\": \"this is just a test\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/authors",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"authors"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.27"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Nov 2025 03:51:08 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"domain": "",
+									"path": ""
+								}
+							],
+							"body": "{\n    \"name\": \"John Doe\",\n    \"bio\": \"this is just a test\",\n    \"updated_at\": \"2025-11-14T03:51:08.000000Z\",\n    \"created_at\": \"2025-11-14T03:51:08.000000Z\",\n    \"id\": 4\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Author",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"John Doe\",\n    \"bio\": \"this is just an update test\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/authors/4",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"authors",
+								"4"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Author",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"John Doe\",\n    \"bio\": \"this is just an update test\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/authors/4",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"authors",
+										"4"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.27"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Nov 2025 03:53:48 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"domain": "",
+									"path": ""
+								}
+							],
+							"body": "{\n    \"id\": 4,\n    \"name\": \"John Doe\",\n    \"bio\": \"this is just an update test\",\n    \"created_at\": \"2025-11-14T03:51:08.000000Z\",\n    \"updated_at\": \"2025-11-14T03:53:48.000000Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Author",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/authors/4",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"authors",
+								"4"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Author",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/authors/4",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"authors",
+										"4"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.27"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Nov 2025 03:54:29 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"domain": "",
+									"path": ""
+								}
+							],
+							"body": "{\n    \"message\": \"Author deleted\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Publishers",
+			"item": [
+				{
+					"name": "List Publishers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/publishers",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"publishers"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List Publishers",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/publishers",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"publishers"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.27"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Nov 2025 03:47:02 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"domain": "",
+									"path": ""
+								}
+							],
+							"body": "{\n    \"current_page\": 1,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"Wisoky and Sons\",\n            \"address\": \"3382 Keira Square\\nNorth Loren, UT 80602\",\n            \"created_at\": \"2025-11-14T02:22:32.000000Z\",\n            \"updated_at\": \"2025-11-14T02:22:32.000000Z\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Jacobson, Zemlak and Dooley\",\n            \"address\": \"24933 Beverly Club\\nPort Dwight, AZ 30551-2132\",\n            \"created_at\": \"2025-11-14T02:22:32.000000Z\",\n            \"updated_at\": \"2025-11-14T02:22:32.000000Z\"\n        }\n    ],\n    \"first_page_url\": \"http://localhost:8000/api/publishers?page=1\",\n    \"from\": 1,\n    \"last_page\": 1,\n    \"last_page_url\": \"http://localhost:8000/api/publishers?page=1\",\n    \"links\": [\n        {\n            \"url\": null,\n            \"label\": \"&laquo; Previous\",\n            \"page\": null,\n            \"active\": false\n        },\n        {\n            \"url\": \"http://localhost:8000/api/publishers?page=1\",\n            \"label\": \"1\",\n            \"page\": 1,\n            \"active\": true\n        },\n        {\n            \"url\": null,\n            \"label\": \"Next &raquo;\",\n            \"page\": null,\n            \"active\": false\n        }\n    ],\n    \"next_page_url\": null,\n    \"path\": \"http://localhost:8000/api/publishers\",\n    \"per_page\": 10,\n    \"prev_page_url\": null,\n    \"to\": 2,\n    \"total\": 2\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Publisher by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/publishers/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"publishers",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Publisher by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/publishers/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"publishers",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.27"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Nov 2025 03:47:22 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"name\": \"Wisoky and Sons\",\n    \"address\": \"3382 Keira Square\\nNorth Loren, UT 80602\",\n    \"created_at\": \"2025-11-14T02:22:32.000000Z\",\n    \"updated_at\": \"2025-11-14T02:22:32.000000Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Publisher",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Gramedia\",\n    \"address\": \"Jombang, Jawa Timur\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/publishers",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"publishers"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Publisher",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Gramedia\",\n    \"address\": \"Jombang, Jawa Timur\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/publishers",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"publishers"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.27"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Nov 2025 03:56:28 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"domain": "",
+									"path": ""
+								}
+							],
+							"body": "{\n    \"name\": \"Gramedia\",\n    \"address\": \"Jombang, Jawa Timur\",\n    \"updated_at\": \"2025-11-14T03:56:28.000000Z\",\n    \"created_at\": \"2025-11-14T03:56:28.000000Z\",\n    \"id\": 3\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Publisher",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Gramedia\",\n    \"address\": \"Kediri, Jawa Timur\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/publishers/3",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"publishers",
+								"3"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Publisher",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Gramedia\",\n    \"address\": \"Kediri, Jawa Timur\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/publishers/3",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"publishers",
+										"3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.27"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Nov 2025 03:57:32 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"domain": "",
+									"path": ""
+								}
+							],
+							"body": "{\n    \"id\": 3,\n    \"name\": \"Gramedia\",\n    \"address\": \"Kediri, Jawa Timur\",\n    \"created_at\": \"2025-11-14T03:56:28.000000Z\",\n    \"updated_at\": \"2025-11-14T03:57:32.000000Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Publisher",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/publishers/3",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"publishers",
+								"3"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Publisher",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/publishers/3",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"publishers",
+										"3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.27"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Nov 2025 03:58:01 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"domain": "",
+									"path": ""
+								}
+							],
+							"body": "{\n    \"message\": \"Publisher deleted\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Books",
+			"item": [
+				{
+					"name": "List Books",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/books",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"books"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List Books",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/books",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"books"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.27"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Nov 2025 03:48:01 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"domain": "",
+									"path": ""
+								}
+							],
+							"body": "{\n    \"current_page\": 1,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"title\": \"Molestiae voluptas voluptatum.\",\n            \"description\": \"Reiciendis aliquam provident est vel adipisci consequatur. Ad cumque illum error sapiente velit laboriosam ratione. Eveniet id vitae ad tempora. Facilis dolore soluta cupiditate aspernatur non non dolore.\",\n            \"author_id\": 1,\n            \"publisher_id\": 2,\n            \"created_at\": \"2025-11-14T02:22:32.000000Z\",\n            \"updated_at\": \"2025-11-14T02:22:32.000000Z\",\n            \"author\": {\n                \"id\": 1,\n                \"name\": \"Jennie Homenick\",\n                \"bio\": \"In distinctio quis pariatur reprehenderit. Eos nostrum aspernatur consequuntur expedita praesentium voluptatem non. Aut delectus ea est in sed hic.\",\n                \"created_at\": \"2025-11-14T02:22:32.000000Z\",\n                \"updated_at\": \"2025-11-14T02:22:32.000000Z\"\n            },\n            \"publisher\": {\n                \"id\": 2,\n                \"name\": \"Jacobson, Zemlak and Dooley\",\n                \"address\": \"24933 Beverly Club\\nPort Dwight, AZ 30551-2132\",\n                \"created_at\": \"2025-11-14T02:22:32.000000Z\",\n                \"updated_at\": \"2025-11-14T02:22:32.000000Z\"\n            }\n        },\n        {\n            \"id\": 2,\n            \"title\": \"Voluptatibus aut est natus.\",\n            \"description\": \"Omnis voluptate debitis nesciunt non soluta aspernatur. Qui sunt aut doloribus consequatur molestiae corrupti. Architecto porro sequi quo eius similique consequatur eveniet temporibus.\",\n            \"author_id\": 1,\n            \"publisher_id\": 2,\n            \"created_at\": \"2025-11-14T02:22:32.000000Z\",\n            \"updated_at\": \"2025-11-14T02:22:32.000000Z\",\n            \"author\": {\n                \"id\": 1,\n                \"name\": \"Jennie Homenick\",\n                \"bio\": \"In distinctio quis pariatur reprehenderit. Eos nostrum aspernatur consequuntur expedita praesentium voluptatem non. Aut delectus ea est in sed hic.\",\n                \"created_at\": \"2025-11-14T02:22:32.000000Z\",\n                \"updated_at\": \"2025-11-14T02:22:32.000000Z\"\n            },\n            \"publisher\": {\n                \"id\": 2,\n                \"name\": \"Jacobson, Zemlak and Dooley\",\n                \"address\": \"24933 Beverly Club\\nPort Dwight, AZ 30551-2132\",\n                \"created_at\": \"2025-11-14T02:22:32.000000Z\",\n                \"updated_at\": \"2025-11-14T02:22:32.000000Z\"\n            }\n        },\n        {\n            \"id\": 3,\n            \"title\": \"Ducimus deserunt sed.\",\n            \"description\": \"Odit dicta provident id dolore quos id laudantium. Molestias et dolores magni quas optio autem. Quod aut odit eligendi culpa eos eius. Assumenda qui modi optio maiores.\",\n            \"author_id\": 2,\n            \"publisher_id\": 2,\n            \"created_at\": \"2025-11-14T02:22:32.000000Z\",\n            \"updated_at\": \"2025-11-14T02:22:32.000000Z\",\n            \"author\": {\n                \"id\": 2,\n                \"name\": \"Prof. Moshe Gerhold\",\n                \"bio\": \"Rerum quidem ea qui atque aut ut. Sint eaque eaque voluptas consequatur unde maiores. Ipsum corporis tenetur sit fuga eligendi tempore voluptatem. Nulla deserunt eos dolore quidem.\",\n                \"created_at\": \"2025-11-14T02:22:32.000000Z\",\n                \"updated_at\": \"2025-11-14T02:22:32.000000Z\"\n            },\n            \"publisher\": {\n                \"id\": 2,\n                \"name\": \"Jacobson, Zemlak and Dooley\",\n                \"address\": \"24933 Beverly Club\\nPort Dwight, AZ 30551-2132\",\n                \"created_at\": \"2025-11-14T02:22:32.000000Z\",\n                \"updated_at\": \"2025-11-14T02:22:32.000000Z\"\n            }\n        },\n        {\n            \"id\": 4,\n            \"title\": \"Voluptas deleniti qui.\",\n            \"description\": \"Eveniet quaerat accusamus repellat beatae vitae. Dolorum architecto dolores dolore numquam. Sunt voluptates alias dolor alias. Assumenda pariatur quas voluptatem quisquam harum laudantium omnis maxime.\",\n            \"author_id\": 2,\n            \"publisher_id\": 2,\n            \"created_at\": \"2025-11-14T02:22:32.000000Z\",\n            \"updated_at\": \"2025-11-14T02:22:32.000000Z\",\n            \"author\": {\n                \"id\": 2,\n                \"name\": \"Prof. Moshe Gerhold\",\n                \"bio\": \"Rerum quidem ea qui atque aut ut. Sint eaque eaque voluptas consequatur unde maiores. Ipsum corporis tenetur sit fuga eligendi tempore voluptatem. Nulla deserunt eos dolore quidem.\",\n                \"created_at\": \"2025-11-14T02:22:32.000000Z\",\n                \"updated_at\": \"2025-11-14T02:22:32.000000Z\"\n            },\n            \"publisher\": {\n                \"id\": 2,\n                \"name\": \"Jacobson, Zemlak and Dooley\",\n                \"address\": \"24933 Beverly Club\\nPort Dwight, AZ 30551-2132\",\n                \"created_at\": \"2025-11-14T02:22:32.000000Z\",\n                \"updated_at\": \"2025-11-14T02:22:32.000000Z\"\n            }\n        },\n        {\n            \"id\": 5,\n            \"title\": \"Sed officia eveniet.\",\n            \"description\": \"Beatae aperiam voluptatem commodi nesciunt aut deleniti. Assumenda et quaerat voluptatem aperiam autem velit. Aut hic incidunt et distinctio aut sunt.\",\n            \"author_id\": 3,\n            \"publisher_id\": 2,\n            \"created_at\": \"2025-11-14T02:22:32.000000Z\",\n            \"updated_at\": \"2025-11-14T02:22:32.000000Z\",\n            \"author\": {\n                \"id\": 3,\n                \"name\": \"Freida Kulas III\",\n                \"bio\": \"Iure accusamus reprehenderit aut provident delectus. Maiores eveniet qui culpa labore sunt. Neque eaque qui asperiores qui. Quo mollitia perferendis ut impedit.\",\n                \"created_at\": \"2025-11-14T02:22:32.000000Z\",\n                \"updated_at\": \"2025-11-14T02:22:32.000000Z\"\n            },\n            \"publisher\": {\n                \"id\": 2,\n                \"name\": \"Jacobson, Zemlak and Dooley\",\n                \"address\": \"24933 Beverly Club\\nPort Dwight, AZ 30551-2132\",\n                \"created_at\": \"2025-11-14T02:22:32.000000Z\",\n                \"updated_at\": \"2025-11-14T02:22:32.000000Z\"\n            }\n        },\n        {\n            \"id\": 6,\n            \"title\": \"Magnam necessitatibus repellendus suscipit.\",\n            \"description\": \"Quasi aliquam rerum ratione saepe ea ea non. Est error illo voluptatem debitis. Vel voluptas aut molestiae rerum. Et iste est tenetur qui.\",\n            \"author_id\": 3,\n            \"publisher_id\": 2,\n            \"created_at\": \"2025-11-14T02:22:32.000000Z\",\n            \"updated_at\": \"2025-11-14T02:22:32.000000Z\",\n            \"author\": {\n                \"id\": 3,\n                \"name\": \"Freida Kulas III\",\n                \"bio\": \"Iure accusamus reprehenderit aut provident delectus. Maiores eveniet qui culpa labore sunt. Neque eaque qui asperiores qui. Quo mollitia perferendis ut impedit.\",\n                \"created_at\": \"2025-11-14T02:22:32.000000Z\",\n                \"updated_at\": \"2025-11-14T02:22:32.000000Z\"\n            },\n            \"publisher\": {\n                \"id\": 2,\n                \"name\": \"Jacobson, Zemlak and Dooley\",\n                \"address\": \"24933 Beverly Club\\nPort Dwight, AZ 30551-2132\",\n                \"created_at\": \"2025-11-14T02:22:32.000000Z\",\n                \"updated_at\": \"2025-11-14T02:22:32.000000Z\"\n            }\n        }\n    ],\n    \"first_page_url\": \"http://localhost:8000/api/books?page=1\",\n    \"from\": 1,\n    \"last_page\": 1,\n    \"last_page_url\": \"http://localhost:8000/api/books?page=1\",\n    \"links\": [\n        {\n            \"url\": null,\n            \"label\": \"&laquo; Previous\",\n            \"page\": null,\n            \"active\": false\n        },\n        {\n            \"url\": \"http://localhost:8000/api/books?page=1\",\n            \"label\": \"1\",\n            \"page\": 1,\n            \"active\": true\n        },\n        {\n            \"url\": null,\n            \"label\": \"Next &raquo;\",\n            \"page\": null,\n            \"active\": false\n        }\n    ],\n    \"next_page_url\": null,\n    \"path\": \"http://localhost:8000/api/books\",\n    \"per_page\": 10,\n    \"prev_page_url\": null,\n    \"to\": 6,\n    \"total\": 6\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Book by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/books/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"books",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Book by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/books/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"books",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.27"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Nov 2025 03:48:34 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"title\": \"Molestiae voluptas voluptatum.\",\n    \"description\": \"Reiciendis aliquam provident est vel adipisci consequatur. Ad cumque illum error sapiente velit laboriosam ratione. Eveniet id vitae ad tempora. Facilis dolore soluta cupiditate aspernatur non non dolore.\",\n    \"author_id\": 1,\n    \"publisher_id\": 2,\n    \"created_at\": \"2025-11-14T02:22:32.000000Z\",\n    \"updated_at\": \"2025-11-14T02:22:32.000000Z\",\n    \"author\": {\n        \"id\": 1,\n        \"name\": \"Jennie Homenick\",\n        \"bio\": \"In distinctio quis pariatur reprehenderit. Eos nostrum aspernatur consequuntur expedita praesentium voluptatem non. Aut delectus ea est in sed hic.\",\n        \"created_at\": \"2025-11-14T02:22:32.000000Z\",\n        \"updated_at\": \"2025-11-14T02:22:32.000000Z\"\n    },\n    \"publisher\": {\n        \"id\": 2,\n        \"name\": \"Jacobson, Zemlak and Dooley\",\n        \"address\": \"24933 Beverly Club\\nPort Dwight, AZ 30551-2132\",\n        \"created_at\": \"2025-11-14T02:22:32.000000Z\",\n        \"updated_at\": \"2025-11-14T02:22:32.000000Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Book",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Belajar Laravel\",\n    \"author_id\": 1,\n    \"publisher_id\": 1\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/books",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"books"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Book",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Belajar Laravel\",\n    \"author_id\": 1,\n    \"publisher_id\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/books",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"books"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.27"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Nov 2025 04:00:58 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"domain": "",
+									"path": ""
+								}
+							],
+							"body": "{\n    \"title\": \"Belajar Laravel\",\n    \"author_id\": 1,\n    \"publisher_id\": 1,\n    \"updated_at\": \"2025-11-14T04:00:58.000000Z\",\n    \"created_at\": \"2025-11-14T04:00:58.000000Z\",\n    \"id\": 7\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Book",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Laravel Advanced\",\n  \"description\": \"ini deskripsi buku\",\n  \"author_id\": 1,\n  \"publisher_id\": 1\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/books/7",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"books",
+								"7"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Book",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"title\": \"Laravel Advanced\",\n  \"description\": \"ini deskripsi buku\",\n  \"author_id\": 1,\n  \"publisher_id\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/books/7",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"books",
+										"7"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.27"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Nov 2025 04:02:16 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"domain": "",
+									"path": ""
+								}
+							],
+							"body": "{\n    \"id\": 7,\n    \"title\": \"Laravel Advanced\",\n    \"description\": \"ini deskripsi buku\",\n    \"author_id\": 1,\n    \"publisher_id\": 1,\n    \"created_at\": \"2025-11-14T04:00:58.000000Z\",\n    \"updated_at\": \"2025-11-14T04:02:16.000000Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Book",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/books/7",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"books",
+								"7"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Book",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/books/7",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"books",
+										"7"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.27"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Nov 2025 04:02:42 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"domain": "",
+									"path": ""
+								}
+							],
+							"body": "{\n    \"message\": \"Book deleted\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Ping",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/ping",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"ping"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Ping",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/ping",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"ping"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.27"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 14 Nov 2025 04:12:27 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"domain": "",
+							"path": ""
+						}
+					],
+					"body": "{\n    \"status\": \"success\",\n    \"message\": \"API is reachable 🚀\"\n}"
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000"
+		},
+		{
+			"key": "token",
+			"value": ""
+		}
+	]
+}

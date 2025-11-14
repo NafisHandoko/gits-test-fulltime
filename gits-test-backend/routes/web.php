@@ -15,7 +15,7 @@ Route::get('/login', function () {
             'email' => 'string',
             'password' => 'string'
         ]
-    ], 200);
+    ], 401);
 })->name('login');
 
 Route::get('/register', function () {
