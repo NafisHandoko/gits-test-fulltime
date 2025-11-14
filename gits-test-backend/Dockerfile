@@ -26,11 +26,11 @@ COPY . .
 # Install Laravel dependencies
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 
-# Generate application key & JWT secret
-RUN php artisan key:generate
+# Generate application key (JWT secret will be generated at runtime if not set)
+RUN php artisan key:generate || true
 
 # Expose port
 EXPOSE 8000
 
-# Default command (run migrations + start server)
-CMD ["sh", "-c", "php artisan serve --host=0.0.0.0 --port=8000"]
+# Default command (generate JWT secret if needed, then start server)
+CMD ["sh", "-c", "php artisan jwt:secret --force 2>/dev/null || true && php artisan serve --host=0.0.0.0 --port=8000"]

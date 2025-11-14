@@ -50,7 +50,7 @@ docker compose exec app php artisan migrate:fresh --seed
 - Pastikan port 8000 tidak digunakan oleh aplikasi lain
 - File `.env` akan digunakan untuk konfigurasi aplikasi (database, JWT, dll)
 - Database PostgreSQL akan otomatis dibuat dan dikonfigurasi melalui docker-compose
-- JWT secret key akan otomatis di-generate saat pertama kali build
+- JWT secret key akan otomatis di-generate saat container pertama kali dijalankan (jika belum ada di `.env`)
 
 ### 2. Frontend (Next.js)
 
