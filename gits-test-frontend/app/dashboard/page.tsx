@@ -44,7 +44,7 @@ export default function DashboardPage() {
                         <h1 className="mb-8 text-3xl font-bold text-gray-900">Dashboard</h1>
 
                         {loading ? (
-                            <div className="text-center">Loading statistics...</div>
+                            <div className="text-center text-black">Loading statistics...</div>
                         ) : (
                             <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
                                 <StatCard

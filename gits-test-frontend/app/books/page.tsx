@@ -104,7 +104,7 @@ export default function BooksPage() {
                                     type="text"
                                     value={filters.title}
                                     onChange={(e) => handleFilterChange('title', e.target.value)}
-                                    className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2"
+                                    className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-black"
                                     placeholder="Search by title..."
                                 />
                             </div>
@@ -148,9 +148,9 @@ export default function BooksPage() {
                             </div>
                         </div>
 
-                        {loading ? (
-                            <div className="text-center">Loading...</div>
-                        ) : (
+            {loading ? (
+                <div className="text-center text-black">Loading...</div>
+            ) : (
                             <>
                                 <div className="overflow-hidden rounded-lg bg-white shadow-md">
                                     <table className="min-w-full divide-y divide-gray-200">

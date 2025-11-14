@@ -69,14 +69,14 @@ export default function PublishersPage() {
                                     setFilter(e.target.value);
                                     setCurrentPage(1);
                                 }}
-                                className="block w-full rounded-md border border-gray-300 px-3 py-2"
+                                className="block w-full rounded-md border border-gray-300 px-3 py-2 text-black"
                                 placeholder="Search by name..."
                             />
                         </div>
 
-                        {loading ? (
-                            <div className="text-center">Loading...</div>
-                        ) : (
+            {loading ? (
+                <div className="text-center text-black">Loading...</div>
+            ) : (
                             <>
                                 <div className="overflow-hidden rounded-lg bg-white shadow-md">
                                     <table className="min-w-full divide-y divide-gray-200">

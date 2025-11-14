@@ -122,9 +122,9 @@ export default function BookDetailPage() {
                     <Sidebar />
                     <div className="ml-64 flex-1">
                         <Topbar />
-                        <main className="p-8 pt-24">
-                            <div className="text-center">Loading...</div>
-                        </main>
+            <main className="p-8 pt-24">
+                <div className="text-center text-black">Loading...</div>
+            </main>
                     </div>
                 </div>
             </ProtectedRoute>
@@ -195,7 +195,7 @@ export default function BookDetailPage() {
                                         value={book.title}
                                         onChange={(e) => setBook({ ...book, title: e.target.value })}
                                         disabled={!isEditing}
-                                        className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 disabled:bg-gray-100"
+                                        className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-black disabled:bg-gray-100"
                                         required
                                     />
                                 </div>
@@ -207,7 +207,7 @@ export default function BookDetailPage() {
                                         onChange={(e) => setBook({ ...book, description: e.target.value })}
                                         disabled={!isEditing}
                                         rows={4}
-                                        className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 disabled:bg-gray-100"
+                                        className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-black disabled:bg-gray-100"
                                     />
                                 </div>
 
