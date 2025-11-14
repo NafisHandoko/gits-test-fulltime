@@ -1,36 +1,104 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Publishing Platform Frontend
 
-## Getting Started
+Frontend application untuk Publishing Platform menggunakan Next.js, TypeScript, dan TailwindCSS.
 
-First, run the development server:
+## Fitur
 
+- ✅ Authentication (Login/Register) dengan JWT
+- ✅ Dashboard dengan statistik (Books, Authors, Publishers)
+- ✅ CRUD untuk Books dengan filtering dan pagination
+- ✅ CRUD untuk Authors dengan filtering dan pagination
+- ✅ CRUD untuk Publishers dengan filtering dan pagination
+- ✅ Protected routes
+- ✅ Responsive UI dengan TailwindCSS
+- ✅ Error handling dan validation
+
+## Setup
+
+1. Install dependencies:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Buat file `.env.local` (sudah ada contoh):
+```env
+NEXT_PUBLIC_API_BASE_URL=http://localhost:8000/api
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Pastikan backend Laravel sudah berjalan di `http://localhost:8000`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Jalankan development server:
+```bash
+npm run dev
+```
 
-## Learn More
+5. Buka browser di `http://localhost:3000`
 
-To learn more about Next.js, take a look at the following resources:
+## Struktur Project
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+gits-test-frontend/
+├── app/
+│   ├── login/          # Halaman login
+│   ├── register/       # Halaman register
+│   ├── dashboard/       # Dashboard dengan statistik
+│   ├── books/          # Halaman books (list + detail/form)
+│   ├── authors/        # Halaman authors (list + detail/form)
+│   └── publishers/      # Halaman publishers (list + detail/form)
+├── components/
+│   ├── Sidebar.tsx     # Sidebar navigation
+│   ├── Topbar.tsx      # Topbar dengan profile dropdown
+│   └── ProtectedRoute.tsx  # Component untuk protected routes
+├── contexts/
+│   └── AuthContext.tsx # Context untuk authentication
+├── lib/
+│   └── api.ts          # API service layer
+└── types/
+    └── index.ts        # TypeScript types/interfaces
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Pages
 
-## Deploy on Vercel
+### Authentication
+- `/login` - Halaman login
+- `/register` - Halaman register
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Main Pages (Protected)
+- `/dashboard` - Dashboard dengan statistik
+- `/books` - List books dengan filtering
+- `/books/[id]` - Detail/edit book
+- `/books/new` - Create new book
+- `/authors` - List authors dengan filtering
+- `/authors/[id]` - Detail/edit author
+- `/authors/new` - Create new author
+- `/publishers` - List publishers dengan filtering
+- `/publishers/[id]` - Detail/edit publisher
+- `/publishers/new` - Create new publisher
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Teknologi
+
+- **Next.js 16** - React framework
+- **TypeScript** - Type safety
+- **TailwindCSS** - Styling
+- **Heroicons** - Icons
+- **Context API** - State management untuk authentication
+
+## API Integration
+
+Frontend menggunakan Fetch API untuk berkomunikasi dengan backend Laravel. Semua request otomatis menambahkan JWT token dari localStorage ke header Authorization.
+
+## Development
+
+```bash
+# Development
+npm run dev
+
+# Build
+npm run build
+
+# Start production
+npm start
+
+# Lint
+npm run lint
+```
