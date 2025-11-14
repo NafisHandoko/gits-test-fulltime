@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useRouter, useParams, usePathname } from 'next/navigation';
 import BookDetailPage from '@/app/books/[id]/page';
@@ -34,6 +34,26 @@ jest.mock('@/lib/api', () => ({
 
 describe('BookDetailPage', () => {
     const mockPush = jest.fn();
+
+    // Suppress act warnings for async state updates
+    let consoleErrorSpy: jest.SpyInstance;
+
+    beforeAll(() => {
+        consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation((message) => {
+            // Suppress act warnings which are expected for async state updates in useEffect
+            if (
+                typeof message === 'string' &&
+                message.includes('An update to') &&
+                message.includes('was not wrapped in act(...)')
+            ) {
+                return;
+            }
+        });
+    });
+
+    afterAll(() => {
+        consoleErrorSpy.mockRestore();
+    });
 
     beforeEach(() => {
         mockPush.mockClear();
@@ -181,46 +201,48 @@ describe('BookDetailPage', () => {
             (useParams as jest.Mock).mockReturnValue({ id: 'new' });
         });
 
-        it('should render new book form', () => {
+        it('should render new book form', async () => {
             render(<BookDetailPage />);
 
-            expect(screen.getByText('New Book')).toBeInTheDocument();
-            expect(screen.getByText('Save')).toBeInTheDocument();
+            await waitFor(() => {
+                expect(screen.getByText('New Book')).toBeInTheDocument();
+                expect(screen.getByText('Save')).toBeInTheDocument();
+            });
         });
 
-    it('should create new book when save is clicked', async () => {
-      const user = userEvent.setup();
-      (booksApi.create as jest.Mock).mockResolvedValue({
-        id: 1,
-        title: 'New Book',
-        author_id: 1,
-        publisher_id: 1,
-      });
+        it('should create new book when save is clicked', async () => {
+            const user = userEvent.setup();
+            (booksApi.create as jest.Mock).mockResolvedValue({
+                id: 1,
+                title: 'New Book',
+                author_id: 1,
+                publisher_id: 1,
+            });
 
-      render(<BookDetailPage />);
+            render(<BookDetailPage />);
 
-      await waitFor(() => {
-        expect(screen.getByText('New Book')).toBeInTheDocument();
-      });
+            await waitFor(() => {
+                expect(screen.getByText('New Book')).toBeInTheDocument();
+            });
 
-      // Find input by role textbox (first one is title)
-      const titleInput = screen.getAllByRole('textbox')[0];
-      await user.type(titleInput, 'New Book');
+            // Find input by role textbox (first one is title)
+            const titleInput = screen.getAllByRole('textbox')[0];
+            await user.type(titleInput, 'New Book');
 
-      // Find selects by their display values
-      const authorSelect = screen.getByDisplayValue('Select an author');
-      await user.selectOptions(authorSelect, '1');
+            // Find selects by their display values
+            const authorSelect = screen.getByDisplayValue('Select an author');
+            await user.selectOptions(authorSelect, '1');
 
-      const publisherSelect = screen.getByDisplayValue('Select a publisher');
-      await user.selectOptions(publisherSelect, '1');
+            const publisherSelect = screen.getByDisplayValue('Select a publisher');
+            await user.selectOptions(publisherSelect, '1');
 
-      await user.click(screen.getByText('Save'));
+            await user.click(screen.getByText('Save'));
 
-      await waitFor(() => {
-        expect(booksApi.create).toHaveBeenCalled();
-        expect(mockPush).toHaveBeenCalledWith('/books');
-      });
-    });
+            await waitFor(() => {
+                expect(booksApi.create).toHaveBeenCalled();
+                expect(mockPush).toHaveBeenCalledWith('/books');
+            });
+        });
     });
 });
 
