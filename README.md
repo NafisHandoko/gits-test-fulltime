@@ -2,6 +2,12 @@
 
 Platform digital untuk mengelola katalog Books, Authors, dan Publishers dengan Laravel Backend dan Next.js Frontend.
 
+## Demo
+
+- **Live Demo**: [https://gits-test-fulltime.vercel.app](https://gits-test-fulltime.vercel.app)
+
+https://github.com/user-attachments/assets/8545b3e1-055d-4129-908f-12e768dbce1a
+
 ## Struktur Project
 
 ```
