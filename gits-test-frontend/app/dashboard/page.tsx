@@ -5,6 +5,7 @@ import { ProtectedRoute } from '@/components/ProtectedRoute';
 import { Sidebar } from '@/components/Sidebar';
 import { Topbar } from '@/components/Topbar';
 import { statsApi } from '@/lib/api';
+import { useAuth } from '@/contexts/AuthContext';
 import {
     BookOpenIcon,
     UserGroupIcon,
@@ -18,21 +19,24 @@ export default function DashboardPage() {
         publishers: 0,
     });
     const [loading, setLoading] = useState(true);
+    const { isAuthenticated, loading: authLoading } = useAuth();
 
     useEffect(() => {
-        const fetchStats = async () => {
-            try {
-                const data = await statsApi.getStats();
-                setStats(data);
-            } catch (error) {
-                console.error('Failed to fetch stats:', error);
-            } finally {
-                setLoading(false);
-            }
-        };
+        if (!authLoading && isAuthenticated) {
+            const fetchStats = async () => {
+                try {
+                    const data = await statsApi.getStats();
+                    setStats(data);
+                } catch (error) {
+                    console.error('Failed to fetch stats:', error);
+                } finally {
+                    setLoading(false);
+                }
+            };
 
-        fetchStats();
-    }, []);
+            fetchStats();
+        }
+    }, [isAuthenticated, authLoading]);
 
     return (
         <ProtectedRoute>

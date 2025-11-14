@@ -7,6 +7,7 @@ import { Sidebar } from '@/components/Sidebar';
 import { Topbar } from '@/components/Topbar';
 import { publishersApi } from '@/lib/api';
 import type { Publisher, PaginatedResponse } from '@/types';
+import { useAuth } from '@/contexts/AuthContext';
 
 export default function PublishersPage() {
     const [publishers, setPublishers] = useState<PaginatedResponse<Publisher> | null>(null);
@@ -15,10 +16,13 @@ export default function PublishersPage() {
     const [filter, setFilter] = useState('');
 
     const router = useRouter();
+    const { isAuthenticated, loading: authLoading } = useAuth();
 
     useEffect(() => {
-        fetchPublishers();
-    }, [currentPage, filter]);
+        if (!authLoading && isAuthenticated) {
+            fetchPublishers();
+        }
+    }, [currentPage, filter, isAuthenticated, authLoading]);
 
     const fetchPublishers = async () => {
         try {

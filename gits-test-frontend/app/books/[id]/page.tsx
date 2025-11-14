@@ -219,7 +219,7 @@ export default function BookDetailPage() {
                                         value={book.author_id || ''}
                                         onChange={(e) => setBook({ ...book, author_id: parseInt(e.target.value) })}
                                         disabled={!isEditing}
-                                        className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 disabled:bg-gray-100"
+                                        className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-black disabled:bg-gray-100"
                                         required
                                     >
                                         <option value="">Select an author</option>
@@ -239,7 +239,7 @@ export default function BookDetailPage() {
                                         value={book.publisher_id || ''}
                                         onChange={(e) => setBook({ ...book, publisher_id: parseInt(e.target.value) })}
                                         disabled={!isEditing}
-                                        className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 disabled:bg-gray-100"
+                                        className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-black disabled:bg-gray-100"
                                         required
                                     >
                                         <option value="">Select a publisher</option>

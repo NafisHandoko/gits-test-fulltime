@@ -8,6 +8,7 @@ import { Topbar } from '@/components/Topbar';
 import { booksApi, authorsApi, publishersApi } from '@/lib/api';
 import type { Book, Author, Publisher, PaginatedResponse } from '@/types';
 import { ApiError } from '@/lib/api';
+import { useAuth } from '@/contexts/AuthContext';
 
 export default function BooksPage() {
     const [books, setBooks] = useState<PaginatedResponse<Book> | null>(null);
@@ -21,12 +22,15 @@ export default function BooksPage() {
         title: '',
     });
     const router = useRouter();
+    const { isAuthenticated, loading: authLoading } = useAuth();
 
     useEffect(() => {
-        fetchBooks();
-        fetchAuthors();
-        fetchPublishers();
-    }, [currentPage, filters]);
+        if (!authLoading && isAuthenticated) {
+            fetchBooks();
+            fetchAuthors();
+            fetchPublishers();
+        }
+    }, [currentPage, filters, isAuthenticated, authLoading]);
 
     const fetchBooks = async () => {
         try {
@@ -113,7 +117,7 @@ export default function BooksPage() {
                                 <select
                                     value={filters.author_id}
                                     onChange={(e) => handleFilterChange('author_id', e.target.value)}
-                                    className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2"
+                                    className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-black"
                                 >
                                     <option value="">All Authors</option>
                                     {authors.map((author) => (
@@ -128,7 +132,7 @@ export default function BooksPage() {
                                 <select
                                     value={filters.publisher_id}
                                     onChange={(e) => handleFilterChange('publisher_id', e.target.value)}
-                                    className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2"
+                                    className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-black"
                                 >
                                     <option value="">All Publishers</option>
                                     {publishers.map((publisher) => (

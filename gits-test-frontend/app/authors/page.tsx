@@ -7,6 +7,7 @@ import { Sidebar } from '@/components/Sidebar';
 import { Topbar } from '@/components/Topbar';
 import { authorsApi } from '@/lib/api';
 import type { Author, PaginatedResponse } from '@/types';
+import { useAuth } from '@/contexts/AuthContext';
 
 export default function AuthorsPage() {
     const [authors, setAuthors] = useState<PaginatedResponse<Author> | null>(null);
@@ -15,10 +16,13 @@ export default function AuthorsPage() {
     const [filter, setFilter] = useState('');
 
     const router = useRouter();
+    const { isAuthenticated, loading: authLoading } = useAuth();
 
     useEffect(() => {
-        fetchAuthors();
-    }, [currentPage, filter]);
+        if (!authLoading && isAuthenticated) {
+            fetchAuthors();
+        }
+    }, [currentPage, filter, isAuthenticated, authLoading]);
 
     const fetchAuthors = async () => {
         try {

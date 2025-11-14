@@ -36,12 +36,32 @@ async function request<T>(
         headers['Authorization'] = `Bearer ${token}`;
     }
 
-    const response = await fetch(`${API_BASE_URL}${endpoint}`, {
-        ...options,
-        headers,
-    });
+    let response: Response;
+    try {
+        response = await fetch(`${API_BASE_URL}${endpoint}`, {
+            ...options,
+            headers,
+        });
+    } catch (error) {
+        // Network error or CORS issue
+        throw new ApiError(
+            'Failed to connect to server. Please check your connection.',
+            0,
+            { error: 'Network error' }
+        );
+    }
 
-    const data = await response.json();
+    let data: any;
+    try {
+        data = await response.json();
+    } catch (error) {
+        // Invalid JSON response
+        throw new ApiError(
+            'Invalid response from server',
+            response.status,
+            { error: 'Invalid JSON' }
+        );
+    }
 
     if (!response.ok) {
         throw new ApiError(
