@@ -188,11 +188,6 @@ cd gits-test-backend
 docker compose exec app php artisan test
 ```
 
-Atau jika menjalankan langsung (tanpa Docker):
-```bash
-php artisan test
-```
-
 #### Menjalankan Test Spesifik
 
 - Test untuk file tertentu:
