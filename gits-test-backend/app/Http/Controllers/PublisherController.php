@@ -11,8 +11,10 @@ class PublisherController extends Controller
     {
         $query = Publisher::query();
 
-        if ($search = $request->query('search')) {
-            $query->where('name', 'ilike', "%{$search}%");
+        // Support both 'name' and 'search' parameters for backward compatibility
+        $name = $request->query('name') ?? $request->query('search');
+        if ($name) {
+            $query->where('name', 'ilike', "%{$name}%");
         }
 
         $publishers = $query->paginate($request->get('limit', 10));

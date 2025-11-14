@@ -11,8 +11,10 @@ class BookController extends Controller
     {
         $query = Book::with(['author', 'publisher']);
 
-        if ($search = $request->query('search')) {
-            $query->where('title', 'ilike', "%{$search}%");
+        // Support both 'title' and 'search' parameters for backward compatibility
+        $title = $request->query('title') ?? $request->query('search');
+        if ($title) {
+            $query->where('title', 'ilike', "%{$title}%");
         }
 
         if ($authorId = $request->query('author_id')) {
