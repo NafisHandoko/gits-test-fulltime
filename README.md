@@ -170,6 +170,128 @@ Setelah menjalankan seeder, Anda dapat menggunakan kredensial berikut untuk logi
 - Start production server: `npm start`
 - Lint: `npm run lint`
 
+## Testing
+
+### Backend Testing
+
+Backend menggunakan Pest PHP untuk testing. Test mencakup unit test untuk models dan feature test untuk API endpoints.
+
+#### Menjalankan Test
+
+1. Masuk ke folder backend:
+```bash
+cd gits-test-backend
+```
+
+2. Jalankan semua test:
+```bash
+docker compose exec app php artisan test
+```
+
+Atau jika menjalankan langsung (tanpa Docker):
+```bash
+php artisan test
+```
+
+#### Menjalankan Test Spesifik
+
+- Test untuk file tertentu:
+```bash
+docker compose exec app php artisan test --filter AuthorTest
+```
+
+- Test untuk direktori tertentu:
+```bash
+docker compose exec app php artisan test tests/Unit
+docker compose exec app php artisan test tests/Feature
+```
+
+#### Coverage Test
+
+Untuk melihat coverage test:
+```bash
+docker compose exec app php artisan test --coverage
+```
+
+#### Test yang Tersedia
+
+**Unit Tests:**
+- `tests/Unit/Models/AuthorTest.php` - Test untuk Author model
+- `tests/Unit/Models/BookTest.php` - Test untuk Book model
+- `tests/Unit/Models/PublisherTest.php` - Test untuk Publisher model
+- `tests/Unit/Models/UserTest.php` - Test untuk User model
+
+**Feature Tests:**
+- `tests/Feature/AuthTest.php` - Test untuk authentication endpoints
+- `tests/Feature/AuthorTest.php` - Test untuk Authors CRUD endpoints
+- `tests/Feature/BookTest.php` - Test untuk Books CRUD endpoints
+- `tests/Feature/PublisherTest.php` - Test untuk Publishers CRUD endpoints
+
+### Frontend Testing
+
+Frontend menggunakan Jest dan React Testing Library untuk testing. Test mencakup unit test untuk components, pages, dan contexts.
+
+#### Menjalankan Test
+
+1. Masuk ke folder frontend:
+```bash
+cd gits-test-frontend
+```
+
+2. Jalankan semua test:
+```bash
+npm test
+```
+
+3. Jalankan test dalam watch mode (otomatis re-run saat file berubah):
+```bash
+npm run test:watch
+```
+
+4. Jalankan test dengan coverage:
+```bash
+npm run test:coverage
+```
+
+#### Menjalankan Test Spesifik
+
+- Test untuk file tertentu:
+```bash
+npm test -- AuthorTest
+```
+
+- Test untuk direktori tertentu:
+```bash
+npm test -- __tests__/components
+npm test -- __tests__/app
+```
+
+#### Test yang Tersedia
+
+**Component Tests:**
+- `__tests__/components/Sidebar.test.tsx` - Test untuk Sidebar component
+- `__tests__/components/Topbar.test.tsx` - Test untuk Topbar component
+- `__tests__/components/ProtectedRoute.test.tsx` - Test untuk ProtectedRoute component
+
+**Page Tests:**
+- `__tests__/app/login.test.tsx` - Test untuk Login page
+- `__tests__/app/register.test.tsx` - Test untuk Register page
+- `__tests__/app/dashboard.test.tsx` - Test untuk Dashboard page
+- `__tests__/app/books.test.tsx` - Test untuk Books list page
+- `__tests__/app/books-detail.test.tsx` - Test untuk Book detail page
+- `__tests__/app/authors.test.tsx` - Test untuk Authors list page
+- `__tests__/app/authors-detail.test.tsx` - Test untuk Author detail page
+- `__tests__/app/publishers.test.tsx` - Test untuk Publishers list page
+- `__tests__/app/publishers-detail.test.tsx` - Test untuk Publisher detail page
+- `__tests__/app/page.test.tsx` - Test untuk Home page
+- `__tests__/app/layout.test.tsx` - Test untuk Root layout
+
+**Context Tests:**
+- `__tests__/contexts/AuthContext.test.tsx` - Test untuk AuthContext
+
+**API Tests:**
+- `__tests__/lib/api.test.ts` - Test untuk API service layer
+
 ## Tech Stack
 
 ### Backend
