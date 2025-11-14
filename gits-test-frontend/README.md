@@ -102,3 +102,35 @@ npm start
 # Lint
 npm run lint
 ```
+
+## Testing
+
+Unit tests are set up using Jest and React Testing Library.
+
+```bash
+# Run all tests
+npm test
+
+# Run tests in watch mode
+npm run test:watch
+
+# Run tests with coverage report
+npm run test:coverage
+```
+
+### Test Structure
+
+Tests are located in the `__tests__` directory:
+
+- `__tests__/lib/api.test.ts` - API service layer tests
+- `__tests__/components/Sidebar.test.tsx` - Sidebar component tests
+- `__tests__/components/Topbar.test.tsx` - Topbar component tests
+- `__tests__/components/ProtectedRoute.test.tsx` - ProtectedRoute component tests
+
+### Writing Tests
+
+When adding new components or utilities, create corresponding test files:
+
+- Component tests: `__tests__/components/ComponentName.test.tsx`
+- Utility/API tests: `__tests__/lib/utilityName.test.ts`
+- Page tests: `__tests__/app/pageName.test.tsx`
