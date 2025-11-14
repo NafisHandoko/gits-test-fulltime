@@ -124,36 +124,6 @@ Setelah menjalankan seeder, Anda dapat menggunakan kredensial berikut untuk logi
 - `PUT /api/books/{id}` - Update book
 - `DELETE /api/books/{id}` - Delete book
 
-## Troubleshooting
-
-### Backend Issues
-
-**Port 8000 sudah digunakan:**
-- Ubah port di `docker-compose.yml` atau hentikan aplikasi yang menggunakan port 8000
-
-**Migration error:**
-- Pastikan container sudah berjalan: `docker compose ps`
-- Coba restart container: `docker compose restart`
-- Cek logs: `docker compose logs app`
-
-**Database connection error:**
-- Pastikan service `db` (PostgreSQL) sudah running: `docker compose ps`
-- Tunggu beberapa detik setelah `docker compose up` untuk database siap
-
-### Frontend Issues
-
-**Cannot connect to backend:**
-- Pastikan backend sudah berjalan di `http://localhost:8000`
-- Cek file `.env.local` dan pastikan `NEXT_PUBLIC_API_BASE_URL` benar
-- Restart frontend setelah mengubah `.env.local`
-
-**Port 3000 sudah digunakan:**
-- Next.js akan otomatis menggunakan port berikutnya (3001, 3002, dll)
-- Atau hentikan aplikasi yang menggunakan port 3000
-
-**Module not found errors:**
-- Hapus `node_modules` dan `package-lock.json`, lalu jalankan `npm install` lagi
-
 ## Development
 
 ### Backend Development
