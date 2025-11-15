@@ -16,7 +16,6 @@ services:
   db:
     image: postgres:16
     container_name: postgres_db
-    restart: always
     environment:
       POSTGRES_DB: gits_test_backend
       POSTGRES_USER: root
